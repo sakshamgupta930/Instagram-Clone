@@ -14,8 +14,9 @@ class TextFieldInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final inputborder =
-        OutlineInputBorder(borderSide: Divider.createBorderSide(context));
+    final inputborder = OutlineInputBorder(
+      borderSide: Divider.createBorderSide(context),
+    );
     return TextField(
       controller: textEditingController,
       decoration: InputDecoration(

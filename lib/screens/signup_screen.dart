@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:instagram_flutter/resources/auth_methods.dart';
 import 'package:instagram_flutter/utils/colors.dart';
 import 'package:instagram_flutter/widgets/text_field.dart';
 
@@ -68,6 +69,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 textEditingController: _passwordEditingController,
                 hintText: "Enter your Password",
                 textInputType: TextInputType.name,
+                isPass: true,
               ),
               SizedBox(height: 24),
               TextFieldInput(
@@ -77,7 +79,13 @@ class _SignupScreenState extends State<SignupScreen> {
               ),
               SizedBox(height: 24),
               InkWell(
-                onTap: () {},
+                onTap: () async {
+                  AuthMethods().signUpUser(
+                      username: _usernameEditingController.text.trim(),
+                      email: _emailEditingController.text.trim(),
+                      password: _passwordEditingController.text.trim(),
+                      bio: _bioEditingController.text.trim());
+                },
                 child: Container(
                   child: Text("Sign up"),
                   padding: EdgeInsets.symmetric(vertical: 15),

@@ -73,7 +73,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               SizedBox(height: 30),
               Flexible(child: Container(), flex: 2),
-              // Divider(color: Colors.grey),
+              Divider(color: Colors.grey),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -97,7 +97,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     padding: EdgeInsets.symmetric(vertical: 8, horizontal: 5),
                   ),
                 ],
-              )
+              ),
+              SizedBox(height: 10)
             ],
           ),
         ),
