@@ -65,7 +65,7 @@ class _SearchScreenState extends State<SearchScreen> {
                       child: ListTile(
                         leading: CircleAvatar(
                           backgroundImage: NetworkImage(
-                              snapshot.data!.docs[index]['photoUrl']),
+                              snapshot.data!.docs[index]['photourl']),
                         ),
                         title: Text(snapshot.data!.docs[index]['username']),
                       ),
