@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:instagram_clone/screens/profile_screen.dart';
 import 'package:instagram_clone/utils/colors.dart';
+import 'package:instagram_clone/utils/global_variables.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -23,6 +24,7 @@ class _SearchScreenState extends State<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.sizeOf(context).width;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: mobileBackgroundColor,
@@ -65,7 +67,7 @@ class _SearchScreenState extends State<SearchScreen> {
                       child: ListTile(
                         leading: CircleAvatar(
                           backgroundImage: NetworkImage(
-                              snapshot.data!.docs[index]['photourl']),
+                              snapshot.data!.docs[index]['photoUrl']),
                         ),
                         title: Text(snapshot.data!.docs[index]['username']),
                       ),
@@ -83,14 +85,23 @@ class _SearchScreenState extends State<SearchScreen> {
                   );
                 }
 
-                return MasonryGridView.count(
-                  crossAxisCount: 3,
-                  crossAxisSpacing: 5,
-                  mainAxisSpacing: 5,
-                  itemCount: snapshot.data!.docs.length,
-                  itemBuilder: (context, index) =>
-                      Image.network(snapshot.data!.docs[index]['postUrl']),
-                );
+                return width > webscreensize
+                    ? MasonryGridView.count(
+                        crossAxisCount: 3,
+                        crossAxisSpacing: 5,
+                        mainAxisSpacing: 5,
+                        itemCount: snapshot.data!.docs.length,
+                        itemBuilder: (context, index) => Image.network(
+                            snapshot.data!.docs[index]['postUrl']),
+                      )
+                    : MasonryGridView.count(
+                        crossAxisCount: 3,
+                        crossAxisSpacing: 5,
+                        mainAxisSpacing: 5,
+                        itemCount: snapshot.data!.docs.length,
+                        itemBuilder: (context, index) => Image.network(
+                            snapshot.data!.docs[index]['postUrl']),
+                      );
               },
             ),
     );

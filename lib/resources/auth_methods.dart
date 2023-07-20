@@ -1,8 +1,11 @@
+import 'dart:typed_data';
+
+import 'package:flutter/material.dart';
+import 'package:instagram_clone/model/user.dart' as model;
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
 import 'package:instagram_clone/resources/storage_methods.dart';
-import 'package:instagram_clone/model/user.dart' as model;
 
 class AuthMethods {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -84,7 +87,7 @@ class AuthMethods {
     return res;
   }
 
-  Future<void> signOut()async{
-    _auth.signOut();
+  Future<void> signOut() async {
+    await _auth.signOut();
   }
 }
